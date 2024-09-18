@@ -1,31 +1,76 @@
-Welcome on the BubuTheDev website here you can see most of my codes form my YT channel!
-MY CHANNEL (SUBSCRIBE) https://www.youtube.com/@BubuTheDev
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BubuTheDev - Roblox Studio Tutorials</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            margin-top: 10px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
 
+    <h1>Welcome to BubuTheDev's Website</h1>
+    <p>Here you can see most of my codes from my YouTube channel!</p>
+    <p><strong><a href="https://www.youtube.com/@BubuTheDev" target="_blank">MY CHANNEL (SUBSCRIBE)</a></strong></p>
 
-FADE ON DEATH TUTORIAL:
-<iframe src="https://www.youtube.com/embed/YQ5jIZKE8s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-code:
-
+    <h2>Fade on Death Tutorial:</h2>
+    <iframe src="https://www.youtube.com/embed/YQ5jIZKE8s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
+    <h2>Code:</h2>
+    <pre>
 local TweenService = game:GetService("TweenService")
 local tweenInfo = TweenInfo.new(1)
 
 game.Players.PlayerAdded:Connect(function(player)
-	player.CharacterAdded:Connect(function(character)
-		local huamnoid : Humanoid = character:FindFirstChildOfClass("Humanoid")
-		if huamnoid then
-			huamnoid.Died:Connect(function()
-				task.wait(0.25)
-				for _, part in pairs(character:GetChildren()) do
-					if part:IsA("BasePart") and part.Name ~= "Head" then
-						TweenService:Create(part, tweenInfo, {Transparency = 1}):Play()
-					elseif part:IsA("BasePart") and part.Name == "Head" then
-						TweenService:Create(part, tweenInfo, {Transparency = 1}):Play()
-						TweenService:Create(part:FindFirstChild("face"), tweenInfo, {Transparency = 1}):Play()
-					elseif part:IsA("Accessory") then
-						TweenService:Create(part:FindFirstChild("Handle"), tweenInfo, {Transparency = 1}):Play()					
-					end
-				end
-			end)
-		end
-	end)
+    player.CharacterAdded:Connect(function(character)
+        local humanoid = character:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            humanoid.Died:Connect(function()
+                task.wait(0.25)
+                for _, part in pairs(character:GetChildren()) do
+                    if part:IsA("BasePart") and part.Name ~= "Head" then
+                        TweenService:Create(part, tweenInfo, {Transparency = 1}):Play()
+                    elseif part:IsA("BasePart") and part.Name == "Head" then
+                        TweenService:Create(part, tweenInfo, {Transparency = 1}):Play()
+                        TweenService:Create(part:FindFirstChild("face"), tweenInfo, {Transparency = 1}):Play()
+                    elseif part:IsA("Accessory") then
+                        TweenService:Create(part:FindFirstChild("Handle"), tweenInfo, {Transparency = 1}):Play()
+                    end
+                end
+            end)
+        end
+    end)
 end)
+    </pre>
+
+</body>
+</html>
