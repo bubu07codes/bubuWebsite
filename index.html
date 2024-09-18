@@ -80,9 +80,9 @@
         <h2>Video Tutorials</h2>
         
         <!-- Example of a video embed -->
-        <div class="video-tutorial">
+        <div class="death-fade">
             <h3>How to Make a Simple Game</h3>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/example_video_link" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/oYQ5jIZKE8s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         
         <!-- Add more videos in the same format -->
@@ -92,20 +92,37 @@
         <h2>Codes from Videos</h2>
         
         <!-- Example of code snippet -->
-        <div class="video-tutorial">
+        <div class="death-fade">
             <h3>Code for Simple Game</h3>
             <pre>
--- This is an example of Roblox Lua code
-print("Hello, Roblox!")
+                local TweenService = game:GetService("TweenService")
+local tweenInfo = TweenInfo.new(1)
+
+game.Players.PlayerAdded:Connect(function(player)
+	player.CharacterAdded:Connect(function(character)
+		local huamnoid : Humanoid = character:FindFirstChildOfClass("Humanoid")
+		if huamnoid then
+			huamnoid.Died:Connect(function()
+				task.wait(0.25)
+				for _, part in pairs(character:GetChildren()) do
+					if part:IsA("BasePart") and part.Name ~= "Head" then
+						TweenService:Create(part, tweenInfo, {Transparency = 1}):Play()
+					elseif part:IsA("BasePart") and part.Name == "Head" then
+						TweenService:Create(part, tweenInfo, {Transparency = 1}):Play()
+						TweenService:Create(part:FindFirstChild("face"), tweenInfo, {Transparency = 1}):Play()
+					elseif part:IsA("Accessory") then
+						TweenService:Create(part:FindFirstChild("Handle"), tweenInfo, {Transparency = 1}):Play()					
+					end
+				end
+			end)
+		end
+	end)
+end)
             </pre>
         </div>
 
         <!-- Add more code snippets for other videos -->
     </section>
-
-    <footer>
-        <p>© 2024 BubuTheDev. All rights reserved.</p>
-    </footer>
 
 </body>
 </html>
