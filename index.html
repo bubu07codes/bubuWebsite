@@ -3,78 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BubuTheDev - Roblox Studio Tutorials</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #4CAF50;
-        }
-        a {
-            color: blue;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        iframe {
-            width: 100%;
-            max-width: 560px;
-            height: 315px;
-            margin-top: 10px;
-        }
-        pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-    </style>
+    <title>BubuTheDev - About Me</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>BubuTheDev</h1>
+        <nav>
+            <ul>
+                <li><a href="#home" onclick="showTab('home')">Home</a></li>
+                <li><a href="#projects" onclick="showTab('projects')">Projects</a></li>
+                <li><a href="#youtube" onclick="showTab('youtube')">YouTube</a></li>
+                <li><a href="#contact" onclick="showTab('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <h1>Welcome to BubuTheDev's Website</h1>
-    <p>Here you can see most of my codes from my YouTube channel!</p>
-    <p><strong><a href="https://www.youtube.com/@BubuTheDev" target="_blank">MY CHANNEL (SUBSCRIBE)</a></strong></p>
- <body>
-    <h2>Fade on Death Tutorial:</h2>
-    <p><strong><a href="https://www.youtube.com/watch?v=oYQ5jIZKE8s" target="_blank">VIDEO</a></strong></p>
-    
-    <h2>Code:</h2>
-    <pre>
-local TweenService = game:GetService("TweenService")
-local tweenInfo = TweenInfo.new(1)
+    <section id="home" class="tab-content">
+        <h2>Welcome to My Site!</h2>
+        <p>Hey! I’m BubuTheDev, a Roblox developer with a passion for creating games, especially with Lua and C#. I love taking on challenges, making tutorials, and finding new ways to make games more engaging.</p>
+    </section>
 
-game.Players.PlayerAdded:Connect(function(player)
-    player.CharacterAdded:Connect(function(character)
-        local humanoid = character:FindFirstChildOfClass("Humanoid")
-        if humanoid then
-            humanoid.Died:Connect(function()
-                task.wait(0.25)
-                for _, part in pairs(character:GetChildren()) do
-                    if part:IsA("BasePart") and part.Name ~= "Head" then
-                        TweenService:Create(part, tweenInfo, {Transparency = 1}):Play()
-                    elseif part:IsA("BasePart") and part.Name == "Head" then
-                        TweenService:Create(part, tweenInfo, {Transparency = 1}):Play()
-                        TweenService:Create(part:FindFirstChild("face"), tweenInfo, {Transparency = 1}):Play()
-                    elseif part:IsA("Accessory") then
-                        TweenService:Create(part:FindFirstChild("Handle"), tweenInfo, {Transparency = 1}):Play()
-                    end
-                end
-            end)
-        end
-    end)
-end)
-    </pre>
-</body>
-     <body>
-    <h2>ADVANCED CHASE NPC AI</h2>
-    <p><strong><a href="https://www.youtube.com/watch?v=UM7UtF4e0-0" target="_blank">VIDEO</a></strong></p>
-</body>
+    <section id="projects" class="tab-content" style="display: none;">
+        <h2>My Projects</h2>
+        <ul>
+            <li>Roblox FPS Game - developing a local GUI for viewport weapons</li>
+            <li>2D Roblox Game - working on grass and cave biomes</li>
+            <li>3D Renderer - creating from scratch without using engines or tools like OpenGL</li>
+        </ul>
+    </section>
+
+    <section id="youtube" class="tab-content" style="display: none;">
+        <h2>YouTube Channel</h2>
+        <p>Check out my YouTube channel, <a href="https://www.youtube.com/@BubuTheDev" target="_blank">BubuTheDev</a>, where I post challenges and tutorials on Roblox Studio!</p>
+        <p> I've recently focused on Roblox Studio challenges, but I previously shared tutorials to help others learn and improve.</p>
+    </section>
+
+    <section id="contact" class="tab-content" style="display: none;">
+        <h2>Contact Me</h2>
+        <p>For inquiries or collaboration, reach out at <a href="mailto:bubu@devemail.com">bubu@devemail.com</a>.</p>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
